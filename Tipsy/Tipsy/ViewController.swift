@@ -24,6 +24,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func tipCalculate(_ sender: Any) {
         let tipMultipliers = [0.18, 0.20, 0.25]
         
@@ -31,8 +35,8 @@ class ViewController: UIViewController {
         let tipAmountDouble = billAmountDouble*tipMultipliers[tipPercentage.selectedSegmentIndex]
         let totalAmountDouble = billAmountDouble + tipAmountDouble
         
-        tipAmount.text = String.init(format: "%.2f", tipAmountDouble)
-        total.text = String.init(format: "%.2f", totalAmountDouble)
+        tipAmount.text = String.init(format: "$%.2f", tipAmountDouble)
+        total.text = String.init(format: "$%.2f", totalAmountDouble)
     }
 
 }
