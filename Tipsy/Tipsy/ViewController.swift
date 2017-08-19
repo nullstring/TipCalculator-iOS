@@ -64,6 +64,19 @@ class ViewController: UIViewController {
         let defaults = UserDefaults.standard
         let defaultTipPercentageSegmentIndex = defaults.integer(forKey: "defaultTipPercentageSegmentIndex")
         tipPercentageControl.selectedSegmentIndex = defaultTipPercentageSegmentIndex
+        
+        let viewCombackTime = Date()
+        let viewLeavingTime = defaults.object(forKey: "viewLeavingTime") as? Date
+        let billAmountDouble = defaults.object(forKey: "viewLeavingAmount") as? Double
+        
+        if viewLeavingTime != nil && billAmountDouble != nil {
+            let interval = DateInterval.init(start: viewCombackTime, end: viewLeavingTime!)
+            let tenMinutesTimeINterval = TimeInterval.init(10 * 60 * 60 /* 10 minutes*/)
+            if interval.duration < tenMinutesTimeINterval {
+                billAmountTextField.text = String.init(format: "$%.2f", billAmountDouble!)
+            }
+        }
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,6 +87,18 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("view will disappear")
+        
+        let defaults = UserDefaults.standard
+        
+        // Set the leaving time
+        let leavingTime = Date()
+        defaults.set(leavingTime, forKey: "viewLeavingTime")
+        
+        // Set the amount when left the view
+        let billAmountDouble = Double(billAmountTextField.text!) ?? 0
+        defaults.set(billAmountDouble, forKey: "viewLeavingAmount")
+        
+        defaults.synchronize()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
