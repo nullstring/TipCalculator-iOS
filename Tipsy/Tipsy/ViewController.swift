@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var billAmount: UITextField!
-    @IBOutlet weak var tipAmount: UILabel!
-    @IBOutlet weak var tipPercentage: UISegmentedControl!
-    @IBOutlet weak var total: UILabel!
+    @IBOutlet weak var totalPerPersonLabel: UILabel!
+    @IBOutlet weak var billAmountTextField: UITextField!
+    @IBOutlet weak var tipAmountLabel: UILabel!
+    @IBOutlet weak var tipPercentageControl: UISegmentedControl!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var splitLabel: UILabel!
+    @IBOutlet weak var splitSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +31,24 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    @IBAction func splitSliderAction(_ sender: Any) {
+        let splitBy = Int(splitSlider.value)
+        splitLabel.text = "\(splitBy)"
+        
+        tipCalculate(self)
+    }
+    
     @IBAction func tipCalculate(_ sender: Any) {
         let tipMultipliers = [0.18, 0.20, 0.25]
         
-        let billAmountDouble = Double(billAmount.text!) ?? 0
-        let tipAmountDouble = billAmountDouble*tipMultipliers[tipPercentage.selectedSegmentIndex]
+        let billAmountDouble = Double(billAmountTextField.text!) ?? 0
+        let tipAmountDouble = billAmountDouble*tipMultipliers[tipPercentageControl.selectedSegmentIndex]
         let totalAmountDouble = billAmountDouble + tipAmountDouble
+        let splitBy = Double(splitSlider.value)
         
-        tipAmount.text = String.init(format: "$%.2f", tipAmountDouble)
-        total.text = String.init(format: "$%.2f", totalAmountDouble)
+        tipAmountLabel.text = String.init(format: "$%.2f", tipAmountDouble)
+        totalLabel.text = String.init(format: "$%.2f", totalAmountDouble)
+        totalPerPersonLabel.text = String.init(format: "$%.2f", totalAmountDouble/splitBy)
     }
     
     override func viewWillAppear(_ animated: Bool) {
