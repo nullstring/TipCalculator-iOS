@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        print("view did load")
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,14 +56,19 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
+        
+        // Text field to become first resonder.
+        billAmountTextField.becomeFirstResponder()
+        
+        // Update the default tip percentage value
+        let defaults = UserDefaults.standard
+        let defaultTipPercentageSegmentIndex = defaults.integer(forKey: "defaultTipPercentageSegmentIndex")
+        tipPercentageControl.selectedSegmentIndex = defaultTipPercentageSegmentIndex
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear")
-        
-        // Text field to become first resonder.
-        billAmountTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

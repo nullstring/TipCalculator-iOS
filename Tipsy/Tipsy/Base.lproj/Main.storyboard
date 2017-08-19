@@ -169,7 +169,7 @@
                                         <color key="textColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-zo-tZf">
+                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-zo-tZf">
                                         <rect key="frame" x="14" y="89" width="347" height="31"/>
                                         <color key="tintColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -219,7 +219,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="zT3-ym-wqy">
                             <color key="tintColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="VMn-ud-kMu" kind="show" id="Iag-Ag-uf9"/>
+                                <segue destination="VMn-ud-kMu" kind="show" id="gdM-fR-8vx"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -249,11 +249,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bho-XL-nmS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bho-XL-nmS">
                                 <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DEFAULT TIP PERCENTAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szM-eF-czt">
-                                        <rect key="frame" x="16" y="8" width="188" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEFAULT TIP PERCENTAGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="szM-eF-czt">
+                                        <rect key="frame" x="16" y="8" width="343" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="cJa-yP-5tw"/>
                                         </constraints>
@@ -261,11 +261,8 @@
                                         <color key="textColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-Kc-3HK">
-                                        <rect key="frame" x="16" y="46" width="343" height="29"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="OPq-pk-nS2"/>
-                                        </constraints>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-Kc-3HK">
+                                        <rect key="frame" x="16" y="48" width="343" height="29"/>
                                         <segments>
                                             <segment title="18%"/>
                                             <segment title="20%"/>
@@ -274,21 +271,35 @@
                                         <color key="tintColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="tipCalculate:" destination="BYZ-38-t0r" eventType="valueChanged" id="LL9-Ql-01z"/>
+                                            <action selector="tipPercentageControlOnTap:" destination="VMn-ud-kMu" eventType="valueChanged" id="D1S-w0-fUQ"/>
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Zrk-Kc-3HK" secondAttribute="trailing" constant="16" id="C0q-7k-wV4"/>
                                     <constraint firstItem="szM-eF-czt" firstAttribute="leading" secondItem="bho-XL-nmS" secondAttribute="leading" constant="16" id="CQK-XS-vGC"/>
-                                    <constraint firstItem="Zrk-Kc-3HK" firstAttribute="top" secondItem="bho-XL-nmS" secondAttribute="top" constant="46" id="NfM-aN-1ZD" userLabel="Tip Percentage.top = top + 48"/>
+                                    <constraint firstItem="szM-eF-czt" firstAttribute="top" secondItem="bho-XL-nmS" secondAttribute="top" constant="8" id="D9S-IM-Z1u"/>
                                     <constraint firstAttribute="height" constant="100" id="XhK-VG-MBK"/>
+                                    <constraint firstAttribute="trailing" secondItem="szM-eF-czt" secondAttribute="trailing" constant="16" id="Y5O-le-a7y"/>
+                                    <constraint firstItem="Zrk-Kc-3HK" firstAttribute="leading" secondItem="bho-XL-nmS" secondAttribute="leading" constant="16" id="YkM-Oo-rUX"/>
+                                    <constraint firstItem="szM-eF-czt" firstAttribute="leading" secondItem="bho-XL-nmS" secondAttribute="leading" constant="16" id="d0j-aC-Woh"/>
+                                    <constraint firstItem="Zrk-Kc-3HK" firstAttribute="top" secondItem="szM-eF-czt" secondAttribute="bottom" constant="16" id="pnM-TV-IYb"/>
                                     <constraint firstAttribute="trailing" secondItem="Zrk-Kc-3HK" secondAttribute="trailing" constant="16" id="s1R-vo-ZZG"/>
                                     <constraint firstItem="szM-eF-czt" firstAttribute="top" secondItem="bho-XL-nmS" secondAttribute="top" constant="8" id="xV7-Mo-bJu"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bho-XL-nmS" firstAttribute="top" secondItem="Bqa-XK-hoP" secondAttribute="bottom" id="Gbx-CT-PiD"/>
+                            <constraint firstItem="bho-XL-nmS" firstAttribute="leading" secondItem="YVv-EC-blF" secondAttribute="leading" id="Ly0-pQ-PBS"/>
+                            <constraint firstAttribute="trailing" secondItem="bho-XL-nmS" secondAttribute="trailing" id="bWa-8M-qbf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="defaultTipPercentageControl" destination="Zrk-Kc-3HK" id="nr7-oO-hQ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbV-za-J4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
