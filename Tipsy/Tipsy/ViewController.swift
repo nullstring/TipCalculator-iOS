@@ -59,6 +59,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did appear")
+        
+        // Text field to become first resonder.
+        billAmountTextField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
