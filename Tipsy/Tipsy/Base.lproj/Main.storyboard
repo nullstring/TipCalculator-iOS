@@ -158,7 +158,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EGw-33-T0g">
-                                <rect key="frame" x="0.0" y="504" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="504" width="375" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPLIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wb3-Cw-Ual">
                                         <rect key="frame" x="16" y="8" width="38" height="24"/>
@@ -169,7 +169,7 @@
                                         <color key="textColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-zo-tZf">
+                                    <slider opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="10" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gr7-zo-tZf">
                                         <rect key="frame" x="14" y="89" width="347" height="31"/>
                                         <color key="tintColor" red="0.2274509804" green="0.2666666667" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
@@ -190,13 +190,14 @@
                                     <constraint firstItem="04I-zM-lad" firstAttribute="leading" secondItem="EGw-33-T0g" secondAttribute="leading" constant="16" id="P8P-XQ-DZe"/>
                                     <constraint firstItem="wb3-Cw-Ual" firstAttribute="top" secondItem="EGw-33-T0g" secondAttribute="top" constant="8" id="gLq-8U-Afh"/>
                                     <constraint firstItem="04I-zM-lad" firstAttribute="top" secondItem="wb3-Cw-Ual" secondAttribute="bottom" constant="8" id="ixV-HZ-VS9"/>
-                                    <constraint firstAttribute="height" constant="100" id="slx-E0-6m0" userLabel="height = 100"/>
+                                    <constraint firstAttribute="height" constant="140" id="slx-E0-6m0" userLabel="height = 100"/>
                                     <constraint firstAttribute="trailing" secondItem="Gr7-zo-tZf" secondAttribute="trailing" constant="16" id="ux4-JW-Rrr"/>
                                     <constraint firstItem="Gr7-zo-tZf" firstAttribute="leading" secondItem="EGw-33-T0g" secondAttribute="leading" constant="16" id="vKp-1O-sd5"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="EGw-33-T0g" firstAttribute="top" secondItem="ABc-cv-nNO" secondAttribute="bottom" id="0C4-j8-hiz"/>
                             <constraint firstAttribute="trailing" secondItem="EGw-33-T0g" secondAttribute="trailing" id="3m6-00-ImT"/>
@@ -214,6 +215,9 @@
                             <constraint firstItem="XOl-7q-Nqp" firstAttribute="top" secondItem="CXt-sV-ht8" secondAttribute="bottom" id="vxt-Tt-Een"/>
                             <constraint firstItem="xAF-C2-caU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yoc-CV-Aph"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="bcg-O1-7tF" appends="YES" id="Yz7-SN-2qK"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tipsy" id="wFD-Il-ClF">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="zT3-ym-wqy">
@@ -234,6 +238,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bcg-O1-7tF">
+                    <connections>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="a7X-Jr-sKI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="792.95352323838085"/>
         </scene>

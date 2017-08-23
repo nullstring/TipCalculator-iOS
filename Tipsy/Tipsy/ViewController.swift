@@ -70,10 +70,10 @@ class ViewController: UIViewController {
         let billAmountDouble = defaults.object(forKey: "viewLeavingAmount") as? Double
         
         if viewLeavingTime != nil && billAmountDouble != nil {
-            let interval = DateInterval.init(start: viewCombackTime, end: viewLeavingTime!)
+            let interval = DateInterval.init(start: viewLeavingTime!, end: viewCombackTime)
             let tenMinutesTimeINterval = TimeInterval.init(10 * 60 * 60 /* 10 minutes*/)
             if interval.duration < tenMinutesTimeINterval {
-                billAmountTextField.text = String.init(format: "$%.2f", billAmountDouble!)
+                billAmountTextField.text = String.init(format: "%.2f", billAmountDouble!)
             }
         }
 
