@@ -56,7 +56,7 @@ class Printer {
         if let text = self.text {
             return text
         }
-		return ""
+        return ""
     }
     init(text: String? = nil) {
         self.text = text
