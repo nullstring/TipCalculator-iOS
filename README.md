@@ -55,7 +55,7 @@ class Printer {
     lazy var print: () -> String = {
         if let text = self.text {
             return text
-		}
+        }
 		return ""
     }
     init(text: String? = nil) {
